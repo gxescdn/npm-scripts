@@ -1,5 +1,90 @@
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . / [L,R=301]
+#Redirection http to https start#
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+#Redirection http to https end#
 
-ErrorDocument 404 /index.php
+
+##301 Redirection Start##
+Redirect 301 /index.html https://www.example.com/
+Redirect 301 /index https://www.example.com/
+##301 Redirection End##
+
+##adding www to links start##
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^example.com [NC]
+RewriteRule ^(.*)$ https://www.example.com/$1 [L,R=301,NC]
+##adding www to links end##
+
+
+
+#example.com/page will display the contents of example.com/page.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L,QSA]
+##
+
+#301 from example.com/page.html to example.com/page
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+##
+
+------------------------------------------------------------------------
+
+
+# remove a-letter from URLs start#
+RewriteCond %{THE_REQUEST} /a-letter/ [NC]
+RewriteRule ^a-letter/(.*)$ /$1 [L,R=301,NC,NE]
+# remove a-letter from URLs end#
+
+## Rewrite non a-letter links start##
+RewriteEngine on
+RewriteRule ^/?a-letter/(.*)(/|\.html)?$ /$1 [R=301,L]
+RequestCond %{DOCUMENT_ROOT}/a-letter%{REQUEST_URI}.html -f
+RewriteRule ^/?(a-1|a-2|a-3|a-4|a-5|a-6|a-7|a-8)/? /a-letter/$1.html [END]
+## Rewrite non a-letter links start##
+
+# remove comments/a/ from links start#
+RewriteCond %{THE_REQUEST} comments/a/ [NC]
+RewriteRule ^comments/a/(.*)$ /$1 [L,R=301,NC,NE]
+# remove comments/a/ from links end#
+
+
+## Rewrite non comments/a/ links start##
+RewriteEngine on
+RewriteRule ^/?comments/a/(.*)(/|\.html)?$ /$1 [R=301,L]
+RequestCond %{DOCUMENT_ROOT}/comments/a%{REQUEST_URI}.html -f
+RewriteRule ^/?([^.?]+)$/? /comments/a/$1.html [END]
+##Rewrite non comments/a/ links end##
+
+------------------------------------------------------------------------
+
+
+# remove b-letter from URLs start#
+RewriteCond %{THE_REQUEST} /b-letter/ [NC]
+RewriteRule ^b-letter/(.*)$ /$1 [L,R=301,NC,NE]
+# remove b-letter from URLs end#
+
+## Rewrite non b-letter links start##
+RewriteEngine on
+RewriteRule ^/?b-letter/(.*)(/|\.html)?$ /$1 [R=301,L]
+RequestCond %{DOCUMENT_ROOT}/b-letter%{REQUEST_URI}.html -f
+RewriteRule ^/?(b-1|b-2|b-3|b-4|b-5|b-6|b-7|b-8)/? /b-letter/$1.html [END]
+##Rewrite non b-letter links end##
+
+
+
+#remove comments/b/ from links start#
+RewriteCond %{THE_REQUEST} comments/b/ [NC]
+RewriteRule ^comments/b/(.*)$ /$1 [L,R=301,NC,NE]
+# remove comments/b/ from links end#    
+
+## Rewrite non comments/b/ links start##
+RewriteEngine on
+RewriteRule ^/?comments/b/(.*)(/|\.html)?$ /$1 [R=301,L]
+RequestCond %{DOCUMENT_ROOT}/comments/b%{REQUEST_URI}.html -f
+RewriteRule ^/?([^.?]+)$/? /comments/b/$1.html [END]
+## Rewrite non-comments/b/ links end##
+
+------------------------------------------------------------------------
