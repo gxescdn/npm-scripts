@@ -1,7 +1,7 @@
 var COISAX = {
                 ativo: !0,
                 texto: "&#8593; Cargando",
-                segundos: 8,
+                segundos: 3,
                 autoLiberar: 300,
                 tempoAaparecerNovamente: 1,
                 stado: !1,
