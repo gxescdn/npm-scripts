@@ -1,0 +1,46 @@
+document.write(`
+
+<!-- Script Mgid -->
+<script type='text/javascript'>
+    //CONFIGURAR
+    var llave = "ESPEREELTIMEPO" + (Math.ceil(new Date().getMinutes() / 1));
+    //CONFIGURAR
+    $me = $("#countdown");
+    $nowclick = $("#nowclick");
+    $downloadbuttons = $("#downloadbuttons");
+    $volverbutton = $("#volverbutton");
+    $countdowndiv = $("#countdowndiv");
+    setInterval(function () {
+        $num = parseInt($me.html());
+        $num--;
+        $me.html($num);
+        if ($num <= 0) {
+            $nowclick.show();
+            $countdowndiv.hide();
+            localStorage.setItem(llave, "YISSELENTERTEIMENT");
+
+        } else {
+
+        }
+        }, 1000);
+
+        if (localStorage.getItem(llave) !== null) {
+            $nowclick.hide();
+            $countdowndiv.hide();
+            $volverbutton.hide();
+            $downloadbuttons.show();
+        }
+        $(document).ready(function () {
+            //Disable cut copy paste
+            $('body').bind('cut copy paste', function (e) {
+                e.preventDefault();
+            });
+            //Disable mouse right click
+            $("body").on("contextmenu",function(e){
+                return false;
+        });
+    });
+</script>
+<!-- End Script Mgid -->
+  
+`)
